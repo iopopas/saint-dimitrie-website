@@ -79,12 +79,13 @@ export default function ContentPage({ content }: { content: PageContent }) {
           </div>
         ) : page.empty ? (
           <div className="empty-page" aria-label={language === "en" ? "Content coming soon" : "Conținut în pregătire"} />
-        ) : page.sections?.map((section, index) => <article className={`content-block${section.variant === "recording" ? " recording-card" : ""}${section.image ? " clergy-profile" : ""}`} key={`${page.title}-${index}`}>
+        ) : page.sections?.map((section, index) => <article className={`content-block${section.variant === "recording" ? " recording-card" : ""}${section.variant === "callout" ? " callout-card" : ""}${section.image ? " clergy-profile" : ""}`} key={`${page.title}-${index}`}>
           {section.image && <div className="clergy-profile-image"><img src={section.image.src} alt={section.image.alt} /></div>}
           {section.meta && <p className="content-meta">{section.meta}</p>}
           {section.heading && <h2>{section.heading}</h2>}
           {section.paragraphs?.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
           {section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}
+          {section.steps && <ol className="content-steps">{section.steps.map(item => <li key={item}>{item}</li>)}</ol>}
           {section.link && <a className="button content-button" href={section.link.href}>{section.link.label} <span aria-hidden="true">↗</span></a>}
           {section.links && <div className="recording-links">{section.links.map(link => <a href={link.href} key={link.href} target="_blank" rel="noreferrer">{link.label} <span aria-hidden="true">↗</span></a>)}</div>}
         </article>)}

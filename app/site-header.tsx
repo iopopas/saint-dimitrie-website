@@ -65,7 +65,7 @@ export default function SiteHeader({ language, onLanguageChange }: { language: L
                 {item.children.map(child => <a key={child.href} href={child.href} onClick={closeNavigation}>{child.label[language]}</a>)}
               </div>
             </div>
-          ) : <a key={item.href} href={item.href} onClick={closeNavigation}>{item.label[language]}</a>)}
+          ) : <a className={item.href === "/donatii/" ? "donation-nav-link" : undefined} key={item.href} href={item.href} onClick={closeNavigation}>{item.label[language]}</a>)}
           <button className="language-toggle" type="button" onClick={() => { onLanguageChange(language === "en" ? "ro" : "en"); closeNavigation(); }}>
             {language === "en" ? "Română" : "English"}
           </button>

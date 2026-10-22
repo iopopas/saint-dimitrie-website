@@ -7,12 +7,9 @@ export const navigation: NavItem[] = [
   { label: { en: "Our Church", ro: "Biserica noastră" }, children: [
     { label: { en: "Clergy", ro: "Clerul nostru" }, href: "/biserica-noastra/clerul/" },
     { label: { en: "Our Parish", ro: "Parohia noastră" }, href: "/biserica-noastra/istoria-noastra/" },
-    { label: { en: "Our Faith", ro: "Credința noastră" }, href: "/our-faith/" },
   ]},
   { label: { en: "Visitors", ro: "Vizitatori" }, children: [
     { label: { en: "Becoming a Member", ro: "Cum devin membru" }, href: "/biserica-noastra/membru/" },
-    { label: { en: "Becoming Orthodox", ro: "Cum devin ortodox" }, href: "/becoming-orthodox/" },
-    { label: { en: "Take a Tour", ro: "Vizitează biserica" }, href: "/take-a-tour/" },
   ]},
   { label: { en: "Calendar", ro: "Calendar" }, href: "/calendar/" },
   { label: { en: "Services", ro: "Sfintele slujbe" }, children: [
@@ -22,15 +19,12 @@ export const navigation: NavItem[] = [
     { label: { en: "Funeral Service", ro: "Înmormântare" }, href: "/services/funeral-service/" },
     { label: { en: "Memorial Service", ro: "Parastas" }, href: "/services/memorial-service/" },
   ]},
-  { label: { en: "Community & Education", ro: "Comunitate și educație" }, children: [
+  { label: { en: "Community", ro: "Comunitate" }, children: [
     { label: { en: "Sunday School", ro: "Școala duminicală" }, href: "/biserica-noastra/scoala-duminicala/" },
     { label: { en: "Literary Circle", ro: "Cenaclul literar" }, href: "/community/literary-circle/" },
-    { label: { en: "Community Announcements", ro: "Anunțuri comunitare" }, href: "/community/announcements/" },
   ]},
-  { label: { en: "Donations", ro: "Donații" }, href: "/donatii/" },
-  { label: { en: "More", ro: "Mai mult" }, children: [
-    { label: { en: "Contact Us", ro: "Contact" }, href: "/contact/" },
-  ]},
+  { label: { en: "Contact", ro: "Contact" }, href: "/contact/" },
+  { label: { en: "Donate", ro: "Donează" }, href: "/donatii/" },
 ];
 
 type ContentLink = { label: string; href: string };
@@ -39,10 +33,11 @@ type Section = {
   meta?: string;
   paragraphs?: string[];
   bullets?: string[];
+  steps?: string[];
   image?: { src: string; alt: string };
   link?: ContentLink;
   links?: ContentLink[];
-  variant?: "recording";
+  variant?: "recording" | "callout";
 };
 type TimelineItem = { date: string; title: string; text: string };
 type DonationImage = { src: string; alt: string; href?: string };
@@ -138,24 +133,24 @@ const literarySections = (language: Language): Section[] => literaryRecordings.m
 export const pages: Record<string, PageContent> = {
   "biserica-noastra/clerul": {
     en: { title: "Our Clergy", eyebrow: "Our Church", intro: "Meet the clergy who serve the Saint Dimitrie the New parish community.", sections: [
-      { heading: "Rev. Fr. Ioan Bogdan", image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/09/Rev__Fr__Ioan_Bogdan.jpg", alt: "Rev. Fr. Ioan Bogdan" }, paragraphs: [
+      { heading: "Rev. Fr. Ioan Bogdan", image: { src: "/rev-fr-ioan-bogdan.webp", alt: "Rev. Fr. Ioan Bogdan" }, paragraphs: [
         "Fr. Rev. Ioan Bogdan was appointed priest of our mission, Saint Demetrius the New, in September 2007 by His Eminence Archbishop Nathaniel Popp. He is a graduate of the \"Unirea\" High School in Brașov and the \"Andrei Șaguna\" Theological Institute in Sibiu, and he earned his Master’s degree in Theology from Saint Vladimir’s Orthodox Theological Seminary in Crestwood, NY.",
         "Son of Fr. Iosif Bogdan and Presbytera Viorica of Brașov, Romania, he was born on June 1, 1970, and came to the United States in April 1997. He served for several years at the Romanian Orthodox Cathedral “St. Mary” in Cleveland, OH, as a subdeacon and deacon, and, beginning October 29, 2006, as an assistant priest. Between 2003 and 2005, he served as Executive Director of the “Saint Andrew’s House” Cultural Center in Detroit, MI.",
         "In September 2005, he married Diana Klein. Together they have two children, Maria and Daniel. In September 2007, they moved to Colorado, where they established the mission parish of St. Demetrius the New.",
       ]},
-      { heading: "Deacon Ilie Gîscă", image: { src: "/deacon-ilie-gisca.png", alt: "Deacon Ilie Gîscă" }, paragraphs: [
+      { heading: "Deacon Ilie Gîscă", image: { src: "/deacon-ilie-gisca.webp", alt: "Deacon Ilie Gîscă" }, paragraphs: [
         "Deacon Ilie Gîscă was ordained by His Grace Bishop Andrei of Cleveland in February 2024. Since then, he has been serving alongside Fr. Ioan at St. Demetrius the New Church in Frederick, CO.",
         "Mr. Ilie Gîscă was born on June 19, 1997, in the Republic of Moldova, Dondușeni District, village of Tîrnova. He is married to Liubov Kushchenko, and they have one child, Miriam Elyia.",
         "He is a graduate of the Orthodox Theological Seminary “St. Hierarch Gavriil” in Chișinău, Republic of Moldova. Between 2016 and 2022, he served as a chanter at the parish of “St. Great Martyr Demetrius” in Chișinău and as an assistant conductor within the Metropolis of Basarabia.",
       ]},
     ]},
     ro: { title: "Clerul nostru", eyebrow: "Biserica noastră", intro: "Cunoașteți clerul care slujește comunitatea parohiei Sfântul Dimitrie cel Nou.", sections: [
-      { heading: "Pr. Ioan Bogdan", image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/09/Rev__Fr__Ioan_Bogdan.jpg", alt: "Părintele Ioan Bogdan" }, paragraphs: [
+      { heading: "Pr. Ioan Bogdan", image: { src: "/rev-fr-ioan-bogdan.webp", alt: "Părintele Ioan Bogdan" }, paragraphs: [
         "Părintele Ioan Bogdan a fost numit preot al misiunii noastre, Sfântul Dimitrie cel Nou, în septembrie 2007 de către Înaltpreasfințitul Arhiepiscop Nathaniel Popp. Este absolvent al Liceului „Unirea” din Brașov și al Institutului Teologic „Andrei Șaguna” din Sibiu și a obținut diploma de master în Teologie la Saint Vladimir’s Orthodox Theological Seminary din Crestwood, NY.",
         "Fiul Părintelui Iosif Bogdan și al Preotesei Viorica din Brașov, România, s-a născut la 1 iunie 1970 și a venit în Statele Unite în aprilie 1997. A slujit timp de mai mulți ani la Catedrala Ortodoxă Română „Sfânta Maria” din Cleveland, OH, ca subdiacon și diacon, iar începând cu 29 octombrie 2006, ca preot asistent. Între 2003 și 2005, a fost Director Executiv al Centrului Cultural „Saint Andrew’s House” din Detroit, MI.",
         "În septembrie 2005, s-a căsătorit cu Diana Klein. Împreună au doi copii, Maria și Daniel. În septembrie 2007, s-au mutat în Colorado, unde au înființat parohia-misiune Sfântul Dimitrie cel Nou.",
       ]},
-      { heading: "Diacon Ilie Gîscă", image: { src: "/deacon-ilie-gisca.png", alt: "Diaconul Ilie Gîscă" }, paragraphs: [
+      { heading: "Diacon Ilie Gîscă", image: { src: "/deacon-ilie-gisca.webp", alt: "Diaconul Ilie Gîscă" }, paragraphs: [
         "Diaconul Ilie Gîscă a fost hirotonit de către Preasfințitul Andrei, Episcop de Cleveland, în februarie 2024. De atunci, slujește alături de Părintele Ioan la Biserica Sfântul Dimitrie cel Nou din Frederick, CO.",
         "Domnul Ilie Gîscă s-a născut la 19 iunie 1997 în satul Tîrnova, raionul Dondușeni, Republica Moldova. Este căsătorit cu Liubov Kushchenko și au un copil, Miriam Elyia.",
         "Este absolvent al Seminarului Teologic Ortodox „Sfântul Ierarh Gavriil” din Chișinău, Republica Moldova. Între 2016 și 2022, a slujit în calitate de cântăreț la Parohia „Sfântul Mare Mucenic Dimitrie” din Chișinău și ca dirijor secund în cadrul Mitropoliei Basarabiei.",
@@ -477,7 +472,98 @@ export const pages: Record<string, PageContent> = {
       { heading: "Contribuție", paragraphs: ["Contribuția sugerată în prezent pentru Parastas este de $100. Membrii cu o vechime de cel puțin șase luni beneficiază de slujbe fără plată. Nimeni nu va fi refuzat din motive financiare."]},
     ]},
   },
-  "biserica-noastra/scoala-duminicala": placeholder("Sunday School", "Școala duminicală"),
+  "biserica-noastra/scoala-duminicala": {
+    en: {
+      title: "Sunday School",
+      eyebrow: "Community & Education",
+      intro: "Our Sunday School helps children grow in the Orthodox faith while discovering the rich traditions of Romanian culture.",
+      sections: [
+        {
+          heading: "Learning, faith, and belonging",
+          paragraphs: [
+            "The Sunday School program is coordinated by Natalia Maxim together with Presbytera Diana Bogdan, Mihaiela Vieru, Georgeta Popa, Diana Marcenco, and Corina Mihăilescu. Children participating in the program learn about the values of Orthodoxy and Romania’s rich traditions.",
+          ],
+        },
+        {
+          meta: "Faith · Worship · Heritage",
+          heading: "Three core goals",
+          steps: [
+            "To educate young people spiritually and morally in accordance with the teachings of our Lord Jesus Christ and the traditions of Romanian Orthodoxy.",
+            "To develop the habit of studying Scripture and the Holy Fathers and, as a result, participating in the services and sacramental life of our church.",
+            "To cultivate an awareness of Romanian heritage, respect for Romanian values, and commitment to the community and country in which they live.",
+          ],
+        },
+        {
+          variant: "callout",
+          meta: "Every Sunday · 11:30 AM",
+          heading: "Schedule",
+          paragraphs: ["Sunday School meets every Sunday beginning at 11:30 AM."],
+        },
+        {
+          heading: "Celebrations throughout the year",
+          paragraphs: ["Throughout the year, the Sunday School children prepare programs and activities for:"],
+          bullets: [
+            "Easter",
+            "Christmas",
+            "An autumn farm visit",
+            "March 1 and March 8 celebrations",
+            "Thanksgiving",
+          ],
+        },
+        {
+          variant: "callout",
+          meta: "$20 per child · Materials included",
+          heading: "Registration",
+          paragraphs: ["To register your child, please speak with one of the Sunday School teachers. The registration fee, which covers materials, is $20 per child."],
+        },
+      ],
+    },
+    ro: {
+      title: "Școala Duminicală",
+      eyebrow: "Comunitate și educație",
+      intro: "Școala Duminicală îi ajută pe copii să crească în credința ortodoxă și să descopere bogatele tradiții românești.",
+      sections: [
+        {
+          heading: "Educație, credință și apartenență",
+          paragraphs: [
+            "Școala Duminicală este un program coordonat de Natalia Maxim, alături de Preoteasa Diana Bogdan, Mihaiela Vieru, Georgeta Popa, Diana Marcenco și Corina Mihăilescu. Copiii participanți la acest program învață despre valorile Ortodoxiei și bogatele tradiții românești.",
+          ],
+        },
+        {
+          meta: "Credință · Slujire · Tradiție",
+          heading: "Trei obiective majore",
+          steps: [
+            "Să educe tinerii din punct de vedere spiritual și moral, în acord cu învățăturile Domnului nostru Iisus Hristos și ale tradițiilor Ortodoxiei Românești.",
+            "Să dezvolte obiceiul de a studia Scriptura și Sfinții Părinți și, în consecință, de a participa la slujbe și la viața sacră a bisericii noastre.",
+            "Să cultive conștiința de neam, cu respect pentru valorile noastre românești, pentru comunitate și pentru țara în care trăiesc.",
+          ],
+        },
+        {
+          variant: "callout",
+          meta: "În fiecare duminică · 11:30 AM",
+          heading: "Orar",
+          paragraphs: ["Școala Duminicală se desfășoară în fiecare duminică, începând cu ora 11:30 AM."],
+        },
+        {
+          heading: "Serbări și activități de-a lungul anului",
+          paragraphs: ["De-a lungul anului, copiii de la Școala Duminicală pregătesc serbări și activități pentru:"],
+          bullets: [
+            "Paști",
+            "Crăciun",
+            "Vizita la fermă, toamna",
+            "1 și 8 Martie",
+            "Thanksgiving",
+          ],
+        },
+        {
+          variant: "callout",
+          meta: "$20 per copil · Materiale incluse",
+          heading: "Înscrieri",
+          paragraphs: ["Pentru înscrieri, vă rugăm să luați legătura cu una dintre doamnele profesoare. Taxa de înscriere, destinată materialelor, este de $20 per copil."],
+        },
+      ],
+    },
+  },
   "community/literary-circle": {
     en: { title: "Mircea Eliade Literary Circle", eyebrow: "Community & Education", intro: "Explore the complete archive of recorded meetings, event photographs, and related articles from 2020 through 2024.", sections: literarySections("en") },
     ro: { title: "Cenaclul literar Mircea Eliade", eyebrow: "Comunitate și educație", intro: "Explorați arhiva completă a întâlnirilor înregistrate, fotografiilor și articolelor din perioada 2020–2024.", sections: literarySections("ro") },
