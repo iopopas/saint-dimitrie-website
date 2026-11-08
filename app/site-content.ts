@@ -110,33 +110,16 @@ const literaryRecordings: ArchiveEntry[] = [
   { date: { en: "December 11, 2021", ro: "11 decembrie 2021" }, title: { en: "Between God and My People", ro: "Între Dumnezeu și neamul meu" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=goCBhQTucz8" }] },
   { date: { en: "September 25, 2021", ro: "25 septembrie 2021" }, title: { en: "The Gustian Archipelago: The Bucharest Sociological School During the Interwar Period", ro: "Arhipelagul Gustian: Școala Sociologică de la București în perioada interbelică" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=ZGd-yFebhyQ" }] },
   { date: { en: "August 28, 2021", ro: "28 august 2021" }, title: { en: "The Romanian Language, the Rich Empress", ro: "Limba română, împărăteasa bogată" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=aFVZlSHVIp4" }] },
-  { date: { en: "July 31, 2021", ro: "31 iulie 2021" }, title: { en: "Lucian Blaga: Beneath the Corolla of Wonders of the World", ro: "Lucian Blaga—Sub corola de minuni a lumii" }, links: [
-    { type: "photos", href: "https://sfdimitrie.org/wp-content/uploads/2021/08/poze_cenaclu_7_31_21.pdf" },
-    { type: "video", href: "https://www.youtube.com/watch?v=wHXlubt3RhM" },
-  ] },
+  { date: { en: "July 31, 2021", ro: "31 iulie 2021" }, title: { en: "Lucian Blaga: Beneath the Corolla of Wonders of the World", ro: "Lucian Blaga—Sub corola de minuni a lumii" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=wHXlubt3RhM" }] },
   { date: { en: "June 19, 2021", ro: "19 iunie 2021" }, title: { en: "The Vitality of Youth", ro: "Seva tinereții" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=iVJTToH9r_o" }] },
   { date: { en: "May 22, 2021", ro: "22 mai 2021" }, title: { en: "Constantin Noica", ro: "Constantin Noica" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=4LK8cKm5_Zc" }] },
-  { date: { en: "April 17, 2021", ro: "17 aprilie 2021" }, title: { en: "Emil Cioran", ro: "Emil Cioran" }, links: [
-    { type: "photos", href: "https://sfdimitrie.org/wp-content/uploads/2021/04/Poze-cenaclu-%E2%80%93-04-17-2021.pdf" },
-    { type: "video", href: "https://www.youtube.com/watch?v=lB2rDgdqSb8" },
-  ] },
-  { date: { en: "March 20, 2021", ro: "20 martie 2021" }, title: { en: "Always Mircea Eliade—Forever", ro: "Întotdeauna Mircea Eliade—Forever" }, links: [
-    { type: "photos", href: "https://sfdimitrie.org/wp-content/uploads/2021/03/poze_cenaclu_2021_03_24.pdf" },
-    { type: "video", href: "https://www.youtube.com/watch?v=JwZPKEaHWSE" },
-  ] },
-  { date: { en: "February 20, 2021", ro: "20 februarie 2021" }, title: { en: "From Eros to Heresies: Love, Folklore, and Poetry", ro: "De la eros la eresuri—Dragoste, folclor și poezie" }, links: [
-    { type: "photos", href: "https://sfdimitrie.org/wp-content/uploads/2021/03/poze_cenaclu_2021_02_20.pdf" },
-    { type: "article", href: "https://sfdimitrie.org/wp-content/uploads/2021/03/Articol_Irina_Airinei_03_02_21.pdf" },
-    { type: "intro", href: "https://www.youtube.com/watch?v=xaCSc-iu6ts" },
-    { type: "video", href: "https://www.youtube.com/watch?v=yPLBt_TvKmo" },
-  ] },
+  { date: { en: "April 17, 2021", ro: "17 aprilie 2021" }, title: { en: "Emil Cioran", ro: "Emil Cioran" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=lB2rDgdqSb8" }] },
+  { date: { en: "March 20, 2021", ro: "20 martie 2021" }, title: { en: "Always Mircea Eliade—Forever", ro: "Întotdeauna Mircea Eliade—Forever" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=JwZPKEaHWSE" }] },
+  { date: { en: "February 20, 2021", ro: "20 februarie 2021" }, title: { en: "From Eros to Heresies: Love, Folklore, and Poetry", ro: "De la eros la eresuri—Dragoste, folclor și poezie" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=yPLBt_TvKmo" }] },
   { date: { en: "January 23, 2021", ro: "23 ianuarie 2021" }, title: { en: "The Eminescu Within Us", ro: "Eminescu din noi" }, notes: {
     en: ["Because of technical difficulties, only 1 hour and 18 minutes of the four hours spent together were recorded. We apologize and will address these issues for future meetings."],
     ro: ["Din cauza unor defecțiuni tehnice, s-au înregistrat numai o oră și 18 minute din cele patru ore petrecute împreună. Ne pare rău și vom remedia aceste probleme pentru întâlnirile viitoare."],
-  }, links: [
-    { type: "photos", href: "https://sfdimitrie.org/wp-content/uploads/2021/01/Cenaclu_23_ian_2021_Poze.pdf" },
-    { type: "video", href: "https://www.youtube.com/watch?v=8sci-cSCcoI" },
-  ] },
+  }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=8sci-cSCcoI" }] },
   { date: { en: "December 5, 2020", ro: "5 decembrie 2020" }, title: { en: "The Burning Bush: The Fire of Faith in Troubled Times", ro: "Rugul Aprins—Focul credinței în vremuri tulburi" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=sEu34YcK1TQ" }] },
   { date: { en: "November 28, 2020", ro: "28 noiembrie 2020" }, title: { en: "Romania’s National Day—RAFA Event", ro: "Ziua României—Eveniment RAFA" }, links: [{ type: "video", href: "https://www.youtube.com/watch?v=Y7snoV55Om8" }] },
 ];
@@ -419,8 +402,8 @@ export const pages: Record<string, PageContent> = {
         { heading: "Download and mail the form", paragraphs: [
           "Download the form in Romanian or English, complete it, and then bring it to the church or mail it to the address below:",
         ], links: [
-          { label: "Romanian PDF form", href: "https://sfdimitrie.org/formular_membru_ro.pdf" },
-          { label: "English PDF form", href: "https://sfdimitrie.org/formular_membru_en.pdf" },
+          { label: "Romanian PDF form", href: "/documents/membership-form-ro.pdf" },
+          { label: "English PDF form", href: "/documents/membership-form-en.pdf" },
         ]},
         { heading: "Mailing address", paragraphs: [
           "Secretariat",
@@ -457,8 +440,8 @@ export const pages: Record<string, PageContent> = {
         { heading: "Descărcați și trimiteți formularul", paragraphs: [
           "Descărcați formularul în română sau engleză, completați-l, după care puteți să îl aduceți la biserică sau să îl trimiteți la adresa de mai jos:",
         ], links: [
-          { label: "Formular PDF în română", href: "https://sfdimitrie.org/formular_membru_ro.pdf" },
-          { label: "Formular PDF în engleză", href: "https://sfdimitrie.org/formular_membru_en.pdf" },
+          { label: "Formular PDF în română", href: "/documents/membership-form-ro.pdf" },
+          { label: "Formular PDF în engleză", href: "/documents/membership-form-en.pdf" },
         ]},
         { heading: "Adresa poștală", paragraphs: [
           "Secretariat",
@@ -795,7 +778,7 @@ export const pages: Record<string, PageContent> = {
             { label: "Email donate@sfdimitrie.org", href: "mailto:donate@sfdimitrie.org" },
             { label: "Learn more about Zelle", href: "https://www.zellepay.com/" },
           ],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2025/12/zelle.jpg", alt: "Zelle donation information for Saint Dimitrie the New" },
+          image: { src: "/images/donation-zelle.jpg", alt: "Zelle donation information for Saint Dimitrie the New" },
         },
         {
           id: "stocks", title: "Stock Donations",
@@ -813,7 +796,7 @@ export const pages: Record<string, PageContent> = {
             { label: "Visit Stock Donator", href: "https://stockdonator.com/" },
             { label: "Email donation questions", href: "mailto:donate@sfdimitrie.org" },
           ],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2023/11/Stocks-Donations-QR-Code.png", alt: "QR code for donating stock to Saint Dimitrie the New", href: "https://stockdonator.com/stock-information/?oid=cefd7dfe" },
+          image: { src: "/images/donation-stock-qr.png", alt: "QR code for donating stock to Saint Dimitrie the New", href: "https://stockdonator.com/stock-information/?oid=cefd7dfe" },
         },
         {
           id: "king-soopers", title: "King Soopers Community Rewards",
@@ -844,7 +827,7 @@ export const pages: Record<string, PageContent> = {
           ],
           note: "Venmo charges the church 1.9% plus $0.10 from your donation.",
           links: [{ label: "Open Venmo", href: "https://venmo.com/account/sign-in" }],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/10/Venmo_QR-1.png", alt: "Venmo QR code for Saint Dimitrie Church", href: "https://venmo.com/account/sign-in" },
+          image: { src: "/images/donation-venmo-qr.png", alt: "Venmo QR code for Saint Dimitrie Church", href: "https://venmo.com/account/sign-in" },
         },
         {
           id: "checks", title: "Checks",
@@ -860,7 +843,7 @@ export const pages: Record<string, PageContent> = {
           ],
           note: "The church is charged 2.5% of your donation. For donations over $100.00, the fee decreases proportionally.",
           links: [{ label: "Donate with PayPal", href: "https://paypal.me/stdimitrie?locale.x=en_US" }],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/12/qrcode.png", alt: "PayPal QR code for Saint Dimitrie the New", href: "https://paypal.me/stdimitrie?locale.x=en_US" },
+          image: { src: "/images/donation-paypal-qr.png", alt: "PayPal QR code for Saint Dimitrie the New", href: "https://paypal.me/stdimitrie?locale.x=en_US" },
         },
         {
           id: "raiseright", title: "RaiseRight",
@@ -895,7 +878,7 @@ export const pages: Record<string, PageContent> = {
             { label: "E-mail donate@sfdimitrie.org", href: "mailto:donate@sfdimitrie.org" },
             { label: "Mai multe despre Zelle", href: "https://www.zellepay.com/" },
           ],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2025/12/zelle.jpg", alt: "Informații pentru donații Zelle către Biserica Sfântul Dimitrie cel Nou" },
+          image: { src: "/images/donation-zelle.jpg", alt: "Informații pentru donații Zelle către Biserica Sfântul Dimitrie cel Nou" },
         },
         {
           id: "stocks", title: "Donații cu acțiuni",
@@ -913,7 +896,7 @@ export const pages: Record<string, PageContent> = {
             { label: "Vizitați Stock Donator", href: "https://stockdonator.com/" },
             { label: "Trimiteți întrebări prin e-mail", href: "mailto:donate@sfdimitrie.org" },
           ],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2023/11/Stocks-Donations-QR-Code.png", alt: "Cod QR pentru donații cu acțiuni către Biserica Sfântul Dimitrie cel Nou", href: "https://stockdonator.com/stock-information/?oid=cefd7dfe" },
+          image: { src: "/images/donation-stock-qr.png", alt: "Cod QR pentru donații cu acțiuni către Biserica Sfântul Dimitrie cel Nou", href: "https://stockdonator.com/stock-information/?oid=cefd7dfe" },
         },
         {
           id: "king-soopers", title: "King Soopers Community Rewards",
@@ -944,7 +927,7 @@ export const pages: Record<string, PageContent> = {
           ],
           note: "Serviciul Venmo taxează biserica cu 1.9% + $0.10 din donația dumneavoastră.",
           links: [{ label: "Deschideți Venmo", href: "https://venmo.com/account/sign-in" }],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/10/Venmo_QR-1.png", alt: "Cod QR Venmo pentru Biserica Sfântul Dimitrie", href: "https://venmo.com/account/sign-in" },
+          image: { src: "/images/donation-venmo-qr.png", alt: "Cod QR Venmo pentru Biserica Sfântul Dimitrie", href: "https://venmo.com/account/sign-in" },
         },
         {
           id: "checks", title: "Cecuri",
@@ -960,7 +943,7 @@ export const pages: Record<string, PageContent> = {
           ],
           note: "Biserica va fi taxată cu 2.5% din donația dumneavoastră. Dacă donația este mai mare de $100.00, taxa scade procentual.",
           links: [{ label: "Donați prin PayPal", href: "https://paypal.me/stdimitrie?locale.x=en_US" }],
-          image: { src: "https://sfdimitrie.org/wp-content/uploads/2020/12/qrcode.png", alt: "Cod QR PayPal pentru Biserica Sfântul Dimitrie cel Nou", href: "https://paypal.me/stdimitrie?locale.x=en_US" },
+          image: { src: "/images/donation-paypal-qr.png", alt: "Cod QR PayPal pentru Biserica Sfântul Dimitrie cel Nou", href: "https://paypal.me/stdimitrie?locale.x=en_US" },
         },
         {
           id: "raiseright", title: "RaiseRight",

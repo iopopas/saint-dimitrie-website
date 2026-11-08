@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Language, navigation } from "./site-content";
 
-const LOGO = "https://sfdimitrie.org/wp-content/uploads/2020/08/STDimitrie_logo-e1748324916623.png";
+const LOGO = "/images/parish-logo.png";
 
 export default function SiteHeader({ language, onLanguageChange }: { language: Language; onLanguageChange: (language: Language) => void }) {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const PARISH_LOGO = "https://sfdimitrie.org/wp-content/uploads/2020/08/STDimitrie_logo-e1748324916623.png?site-icon=1";
+const PARISH_LOGO = "/images/parish-logo.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

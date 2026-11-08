@@ -148,7 +148,7 @@ export default function Home() {
       <section className="hero" id="welcome">
         <img
           className="hero-image"
-          src="https://sfdimitrie.org/wp-content/uploads/2020/09/55485908_1068868776647102_8974784101470961664_n.jpg"
+          src="/images/home-community.jpg"
           alt="Saint Dimitrie the New Romanian Orthodox Church"
         />
         <div className="hero-shade" />
@@ -207,7 +207,7 @@ export default function Home() {
       <section className="section relic-section">
         <div className="shell relic-grid">
           <div className="relic-image-wrap">
-            <img src="https://sfdimitrie.org/wp-content/uploads/2020/10/Cruce-69-e1602263593256.jpg" alt="Relic of the Holy Cross at Saint Dimitrie Church" />
+            <img src="/images/home-holy-cross.jpg" alt="Relic of the Holy Cross at Saint Dimitrie Church" />
           </div>
           <div className="editorial-copy">
             <p className="eyebrow">{t.relicKicker}</p>
