@@ -93,7 +93,7 @@ function dateKey(date: Date) {
 }
 
 function parseEvents(ics: string): RawEvent[] {
-  return unfold(ics).split("BEGIN:VEVENT").slice(1).map<RawEvent | null>((block) => {
+  return unfold(ics).split("BEGIN:VEVENT").slice(1).map((block) => {
     const lines = block.split(/\r?\n/).slice(0, -1);
     const values = lines.map(property).filter(Boolean) as NonNullable<ReturnType<typeof property>>[];
     const first = (name: string) => values.find((item) => item.name === name);

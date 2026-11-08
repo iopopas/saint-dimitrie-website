@@ -62,12 +62,37 @@ export default function SiteHeader({ language, onLanguageChange }: { language: L
                 {item.label[language]}
               </button>
               <div className="nav-dropdown" aria-hidden={openGroup !== item.label.en}>
-                {item.children.map(child => <a key={child.href} href={child.href} onClick={closeNavigation}>{child.label[language]}</a>)}
+                {item.children.map(child => {
+                  const external = child.href?.startsWith("http");
+                  return <a key={child.href} href={child.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} onClick={closeNavigation}>{child.label[language]}</a>;
+                })}
               </div>
             </div>
           ) : <a className={item.href === "/donatii/" ? "donation-nav-link" : undefined} key={item.href} href={item.href} onClick={closeNavigation}>{item.label[language]}</a>)}
-          <button className="language-toggle" type="button" onClick={() => { onLanguageChange(language === "en" ? "ro" : "en"); closeNavigation(); }}>
-            {language === "en" ? "Română" : "English"}
+          <button
+            className="language-toggle"
+            type="button"
+            aria-label={language === "en" ? "Switch to Romanian" : "Comută în limba engleză"}
+            title={language === "en" ? "Română" : "English"}
+            onClick={() => { onLanguageChange(language === "en" ? "ro" : "en"); closeNavigation(); }}
+          >
+            <span className="language-flag" aria-hidden="true">
+              {language === "en" ? (
+                <svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice" role="presentation">
+                  <path fill="#002B7F" d="M0 0h1v2H0z" />
+                  <path fill="#FCD116" d="M1 0h1v2H1z" />
+                  <path fill="#CE1126" d="M2 0h1v2H2z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" role="presentation">
+                  <path fill="#012169" d="M0 0h60v30H0z" />
+                  <path stroke="#FFF" strokeWidth="6" d="m0 0 60 30m0-30L0 30" />
+                  <path stroke="#C8102E" strokeWidth="4" d="m0 0 60 30m0-30L0 30" />
+                  <path stroke="#FFF" strokeWidth="10" d="M30 0v30M0 15h60" />
+                  <path stroke="#C8102E" strokeWidth="6" d="M30 0v30M0 15h60" />
+                </svg>
+              )}
+            </span>
           </button>
         </nav>
       </div>

@@ -5,8 +5,10 @@ export type NavItem = { label: Record<Language, string>; href?: string; children
 export const navigation: NavItem[] = [
   { label: { en: "Home", ro: "Acasă" }, href: "/" },
   { label: { en: "Our Church", ro: "Biserica noastră" }, children: [
+    { label: { en: "Our Future Church", ro: "Viitoarea noastră biserică" }, href: "/biserica-noastra/viitoarea-biserica/" },
     { label: { en: "Clergy", ro: "Clerul nostru" }, href: "/biserica-noastra/clerul/" },
     { label: { en: "Our Parish", ro: "Parohia noastră" }, href: "/biserica-noastra/istoria-noastra/" },
+    { label: { en: "Romanian Episcopate", ro: "Episcopia Română" }, href: "https://roea.org/" },
   ]},
   { label: { en: "Visitors", ro: "Vizitatori" }, children: [
     { label: { en: "Becoming a Member", ro: "Cum devin membru" }, href: "/biserica-noastra/membru/" },
@@ -21,6 +23,7 @@ export const navigation: NavItem[] = [
   ]},
   { label: { en: "Community", ro: "Comunitate" }, children: [
     { label: { en: "Sunday School", ro: "Școala duminicală" }, href: "/biserica-noastra/scoala-duminicala/" },
+    { label: { en: "Youth Development", ro: "Dezvoltarea tinerilor" }, href: "/community/youth-development/" },
     { label: { en: "Literary Circle", ro: "Cenaclul literar" }, href: "/community/literary-circle/" },
   ]},
   { label: { en: "Contact", ro: "Contact" }, href: "/contact/" },
@@ -39,6 +42,31 @@ type Section = {
   links?: ContentLink[];
   variant?: "recording" | "callout";
 };
+type LiteraryArticle = {
+  meta: string;
+  title: string;
+  paragraphs: string[];
+  link?: ContentLink;
+  image?: { src: string; alt: string };
+};
+type LiteraryPageData = {
+  navLabels: string[];
+  aboutTitle: string;
+  aboutMeta: string;
+  aboutParagraphs: string[];
+  aboutSignature: string;
+  boardTitle: string;
+  boardIntro: string;
+  boardMembers: string[];
+  recordingsTitle: string;
+  recordingsIntro: string;
+  recordings: Section[];
+  showMore: string;
+  showLess: string;
+  articlesTitle: string;
+  articlesIntro: string;
+  articles: LiteraryArticle[];
+};
 type TimelineItem = { date: string; title: string; text: string };
 type DonationImage = { src: string; alt: string; href?: string };
 type DonationMethod = {
@@ -52,7 +80,7 @@ type DonationMethod = {
   links?: ContentLink[];
   image?: DonationImage;
 };
-type LocalizedPage = { title: string; eyebrow: string; intro?: string; empty?: boolean; sections?: Section[]; calendarEmbed?: string; timeline?: TimelineItem[]; donationMethods?: DonationMethod[]; donationClosing?: string };
+type LocalizedPage = { title: string; eyebrow: string; intro?: string; empty?: boolean; sections?: Section[]; calendarEmbed?: string; videoEmbed?: string; videoTitle?: string; timeline?: TimelineItem[]; donationMethods?: DonationMethod[]; donationClosing?: string; literary?: LiteraryPageData };
 export type PageContent = Record<Language, LocalizedPage>;
 
 const placeholder = (enTitle: string, roTitle: string): PageContent => ({
@@ -130,7 +158,189 @@ const literarySections = (language: Language): Section[] => literaryRecordings.m
     .map(link => ({ label: archiveLinkLabel(link.type, language), href: link.href })),
 }));
 
+const literaryPage = (language: Language): LiteraryPageData => language === "en" ? {
+  navLabels: ["About & history", "Board of directors", "Recordings", "Articles"],
+  aboutTitle: "A bridge between cultures and generations",
+  aboutMeta: "Founded in December 2011 · Frederick, Colorado",
+  aboutParagraphs: [
+    "Founded in December 2011 at the initiative of professors Simona Sîrghie and Sebastian Doreanu, with the help of Prof. Anca Sîrghie, Ph.D., and Rev. Fr. Ioan Bogdan of the Saint Dimitrie the New parish, the Romanian literary circle in the American state at the foot of the Rocky Mountains chose as its spiritual patron Mircea Eliade—the universal man, a Renaissance-type scholar through the variety of fields he approached (science, literature, etc.).",
+    "The organizers began with the idea of preserving the national language and culture among Romanian immigrants in this area, while also making them known to Americans.",
+    "Alongside the church and the local organization RAFA (Romanian American Freedom Alliance), the circle wishes to be a bridge between Romanians at home and those who have chosen to live in these lands. At the same time, we want it to become a bridge between generations, so that Romanian-American youth born here may become familiar with their origins, traditions, and, especially, the language spoken by their parents and grandparents.",
+    "By nature, people are drawn to beauty, harmony, generous ideas, and the joy of being together with those who love, appreciate, and admire the same things.",
+    "Our literary circle offers all this spiritual joy because it is the place where poetry (and literature in general) meets and harmonizes perfectly with music, the visual arts, history, philosophy, and religion.",
+    "The books presented here are gates that open toward other horizons, while the invited writers and artists have become helmsmen of the imagination.",
+    "We invite you to embark with us on the ship of the spirit, on a journey toward the world of beauty, for such wonderful places do exist. Finding them means that you have sought them!",
+  ],
+  aboutSignature: "Simona Sîrghie and Sebastian Doreanu, captains of the Romanian Literary Circle “Mircea Eliade”",
+  boardTitle: "Board of directors",
+  boardIntro: "The Literary Circle is guided by educators, scholars, and clergy committed to Romanian culture and community life.",
+  boardMembers: ["Prof. Anca Sîrghie, Ph.D.", "Rev. Fr. Ioan Bogdan", "Prof. Sebastian Doreanu", "Prof. Simona Sîrghie"],
+  recordingsTitle: "Recordings",
+  recordingsIntro: "Revisit conversations on Romanian literature, philosophy, history, faith, and cultural identity. The newest meetings appear first.",
+  recordings: literarySections("en"),
+  showMore: "See all recordings",
+  showLess: "Show fewer recordings",
+  articlesTitle: "Articles & recognition",
+  articlesIntro: "Writers and scholars have praised the circle’s intellectual depth, careful organization, and role in connecting Romanian culture across borders.",
+  articles: [
+    {
+      meta: "Article written by Ion Lazu",
+      title: "A Literary Circle Without Equal in the Romanian World",
+      paragraphs: [
+        "This is about the Mircea Eliade Literary Circle of Denver, Colorado, USA. A simple, plainly visible observation, after I followed from beginning to end the proceedings—over four full hours, without a single second of respite!—of this long-established circle whose prestige continues to grow; proceedings easily accessible on Zoom, a circle brilliantly organized, without the slightest hesitation and with the highest professionalism, by Mr. Sebastian Doreanu, a well-known figure of the cultural diaspora who is rising rapidly in my estimation of our literary life. With an extraordinarily engaging theme—this time Lucian Blaga, the poet and philosopher—and with elite participation from every region of the Romanian world, but principally from our beloved homeland itself, this cultural feast succeeded in inspiring me and, in practice, restoring my fundamental confidence in the value of our writers and cultural historians. Put more simply: we have people of the highest value; why do we not manage to keep our eyes on them, and why have distrust, discouragement, and longing overcome us?!? The surprises followed one another: from the outstanding speakers to the excellent way Mr. Doreanu managed to support both his own statements about the excellence of studies concerning the great poet and philosopher and those of the speakers who followed one another for four hours, through the prompt presentation of numerous books published specifically on the subjects under discussion—and I do not believe I exaggerate in saying that nearly one hundred volumes were presented to us, with precise, pertinent explanations of their content. It must be emphasized: these were books read word for word, not elements of cultural decoration…",
+        "A highly learned presentation by Mrs. Anca Sârghie about Blaga, an eminent personality of our twentieth-century culture. Comparable to Eminescu, whose lineage he acknowledged, Blaga himself wished to be considered the “younger brother.” Many similarities deserve attention: both were educated in the German tradition, both cultivated the national myth, and both edited folklore collections, etc. Even the fact that Blaga, who began writing poetry at fifteen and whose poems were long ignored, was first published nowhere other than Cernăuți, in historic Bukovina, may belong to this suggestion of similarities. Blaga later edited Eminescu’s poetry and accompanied it with learned prefaces. He worked on the German translation of Eminescu in 1928, for which he would receive the Hamangiu Prize in 1935. Blaga referred to Eminescu throughout his life, including in his acceptance speech at the Romanian Academy. He was unforgiving toward those who attacked Eminescu—Grama, Stăniloae, Rădulescu-Motru—and contributed essentially to Eminescu’s rehabilitation. See Liviu Rusu’s study From Mihai Eminescu to Lucian Blaga, as well as Ovidiu Drîmba’s The Philosophy of Blaga. Then comes the episode involving the minor poet Mihai Beniuc, who attacked Blaga ignobly, including in the 1959 novel On the Knife’s Edge. During the conference, Mr. Sebastian Doreanu showed us various books about Blaga that had been sent abroad, naturally without their covers, in order to evade the Securitate. I have described the first presentation in greater detail to give you a general idea of the level of the contributions within the Circle. You can access the Denver Orthodox church’s website, where you will find recordings of all the literary-circle meetings; the church supports this circle by every means so that each of you may delight in them, enrich yourselves, and form your own understanding.",
+        "The following speakers came next: Ioan Biriș—Lucian Blaga and Dogmatic Concepts: From the Philosophy of the Absolute to the Philosophy of Science. His clear assertion: Lucian Blaga is the greatest Romanian philosopher—as C. Noica also stated, placing D. D. Roșca alongside Blaga. In greater detail: Blaga was both a poet and a philosopher, but he did not confuse the two domains. He had been interested in science since high school and astonished his examiners at the baccalaureate. He made mathematics and physics fields of profound interest and studied them deeply. The twentieth century witnessed a widening of the boundaries of knowledge, but also an oscillation from the rational to the irrational: Bergson, Frobenius, Spengler, Freud. He associated with Einstein and Poincaré. The rigorous dimension of Blaga’s work cannot be overlooked. Etc.",
+        "Florea Lucaci. The Principle of Negation in Blaga’s Thought.",
+        "Adrian Săhlean. On Blaga’s The Mioritic Space and the numerous errors in approaches to the ballad Miorița.",
+        "Ileana Costea. The American artist Jerry McDaniel and Blaga’s light.",
+        "Cristian Stamatoiu. The anthropological roots of Master Manole and the presence of this myth, through Lucian Blaga, in Romanian drama.",
+        "Maria-Daniela Pănăzan. Biblical motifs in Lucian Blaga’s poetry.",
+        "Dorin Stoika. The human condition in the universe according to Lucian Blaga’s metaphysics.",
+        "Horia I. Groza. Blaga and the Romanian village.",
+        "Ion Dur. Lucian Blaga and Vasile Băncilă—a metaphysical friendship.",
+        "Francisc Lorinczi. The Sounds of the Tear (a recital from the poems of Lucian Blaga).",
+        "Lidia Lazu: Lucian Blaga recital—Yesterday’s Light!",
+        "At the end, five or six people offered their points of view during the Discussions, hosted with the same distinction by Mr. Sebastian Doreanu.",
+        "Explore the work of the Mircea Eliade Literary Circle of Denver, Colorado, on the local church’s website.",
+        "Excelsior!",
+      ],
+    },
+    {
+      meta: "Article written by Ion Dur for the Mircea Eliade Literary Circle",
+      title: "Bessarabia—A Corner of Romania",
+      paragraphs: [
+        "As it has accustomed its target audience, the Mircea Eliade Literary Circle of Denver, Colorado, held another “collector’s edition” yesterday. It is true that the subject was passionate, serious, generous, and of the greatest interest: BESSARABIA—A CORNER OF ROMANIA.",
+        "Leading specialists exchanged syllogisms for the benefit of more than forty followers, coming from folklore, history, literary criticism, and prose: Sanda Golopenția, Nicolas Dima, Maria Daniela Pănăzan, Constantin Eretescu, Ada Stuparu, Anca Sârghie, Stoica Lascu, Alex Cetățeanu, Horia Ion Groza.",
+        "The cultivation of aesthetic emotions was sustained by Ileana Barbu’s delicate painting and graphic art—she also ventures into sculpture—and by the varied poetic forms explored by Lilia Manole, Diana Marcenco, and Ștefan Mircea Bîrtan.",
+        "During the four hours of the Circle, truly fiery discussions also found their place at the end—Professor Corbu set the tone—with judgments that were, for the time being, more or less utopian regarding the reunification of today’s Romania, while Bessarabia continues to cry beneath the Soviet-Russian boot.",
+        "But the entire direction and architecture of the Mircea Eliade Literary Circle rests on two caryatids whose strength sustains its well-deserved achievement: the philologist Simona Sîrghie and the historian Sebastian / Cayus Dorean.",
+        "Fully deserved congratulations, and good health so that they may continue to move forward this Noah’s Ark, which month after month welcomes all those who feel and think in Romanian.",
+        "BEING ROMANIAN, WE ARE ALSO UNIVERSAL, Arghezi would say.",
+      ],
+    },
+  ],
+} : {
+  navLabels: ["Despre și istoric", "Consiliul director", "Înregistrări", "Articole"],
+  aboutTitle: "O punte între culturi și generații",
+  aboutMeta: "Fondat în decembrie 2011 · Frederick, Colorado",
+  aboutParagraphs: [
+    "Pornit în luna decembrie a anului 2011, din inițiativa profesorilor Simona Sîrghie și Sebastian Doreanu, cu ajutorul doamnei Prof. Univ. Dr. Anca Sîrghie și al preotului Ioan Bogdan de la parohia Sf. Dimitrie cel Nou, cenaclul românesc din statul american de la poalele Munților Stâncoși și-a ales ca patron spiritual pe cărturarul de factură renascentistă, prin varietatea domeniilor abordate (știință, literatură, etc.), omul universal Mircea Eliade.",
+    "Ideea de la care au pornit organizatorii a fost aceea de păstrare a limbii și culturii naționale printre emigranții români din această zonă, cât și de a le face pe acestea cunoscute americanilor.",
+    "Alături de biserică și de organizația locală RAFA (Romanian American Freedom Alliance), cenaclul se dorește a fi o punte de legătură între românii de acasă și cei care au ales să să trăiască pe aceste meleaguri. În același timp, ne dorim să devină și o punte de legătură între generații, astfel ca tinerii româno-americani, născuți aici, să fie familiarizați cu originile, tradițiile și, îndeosebi, cu limba vorbită de părinții și bunicii lor.",
+    "Prin natura sa, omul este atras de frumos, de armonie, de idei generoase, de bucuria de a fi împreună cu semenii săi, care indrăgesc, apreciază și admiră aceleași lucruri.",
+    "Cenaclul nostru oferă toată această bucurie spirituală pentru că este locul în care se se întâlnesc și se armonizează perfect poezia (și literatura în general) cu muzica, artele plastice, istoria, filosofia și religia.",
+    "Cărțile prezentate aici sunt porți ce se deschid spre alte orizonturi, iar scriitorii și artiștii invitați au devenit timonieri ai imaginației.",
+    "Vă așteptăm să vă îmbarcați, alături de noi, pe corabia spiritului, într-o călătorie spre lumea frumosului, căci există și asemenea locuri minunate. Găsindu-le, înseamnă că le-ați căutat!",
+  ],
+  aboutSignature: "Simona Sîrghie și Sebastian Doreanu, căpitanii corabiei Cenaclul Românesc „Mircea Eliade”",
+  boardTitle: "Consiliul director",
+  boardIntro: "Cenaclul este îndrumat de profesori, cărturari și clerici dedicați culturii române și vieții comunității.",
+  boardMembers: ["Prof. Univ. Dr. Anca Sîrghie", "Pr. Ioan Bogdan", "Prof. Sebastian Doreanu", "Prof. Simona Sîrghie"],
+  recordingsTitle: "Înregistrări",
+  recordingsIntro: "Revedeți întâlnirile dedicate literaturii, filosofiei, istoriei, credinței și identității culturale românești. Cele mai noi ediții apar primele.",
+  recordings: literarySections("ro"),
+  showMore: "Vezi toate înregistrările",
+  showLess: "Afișează mai puține",
+  articlesTitle: "Articole și aprecieri",
+  articlesIntro: "Scriitori și cărturari au apreciat profunzimea intelectuală a cenaclului, organizarea atentă și rolul său în unirea culturii române de pretutindeni.",
+  articles: [
+    {
+      meta: "Articol scris de Ion Lazu",
+      title: "Un cenaclu literar fără egal în lumea românească",
+      paragraphs: [
+        "Este vorba despre cenaclul Mircea Eliade de la Denver, Colorado, USA. Constatare simplă, la vedere, după ce am urmărit d-a-capo al fine desfășurarea – de-a lungul a 4 ore bătute pe muchie, fără vreo secundă de destindere ! – a lucrărilor acestui cenaclu cu vechime și cu prestigiu în creștere; lucrări lesne de accesat pe Zoom, un cenaclu aflat în organizarea strălucită, fără cea mai mică ezitare, de înalt profesionalism, a dlui Sebastian Doreanu, personaj cunoscut al diasporei culturale și care urcă vertiginos în aprecierile mele privind viața noastră literară. Cu o tematică incitantă la extrem – de astă dată Lucian Blaga, poetul și filosoful – și cu asigurarea unei participări de elită, din toate zonele românității, dar în principal din chiar dulcea țară, acest regal cultural a izbutit să mă entuziasmeze, practic să-mi relanseze încrederea de principiu în valoarea literaților și istoricilor culturii noastre. Mai simplu spus: avem oameni de cea mai înaltă valoare, de ce oare nu reușim să fim cu ochii pe dânșii, de ce ne-a cuprins neîncrederea, descurajarea, aleanul?!? Surprizele se țin lanț, cum spuneam: de la conferențiarii de vârf, la modul excelent în care dl Doreanu a izbutit să susțină propriile afirmații despre excelența studiilor privindu-l pe marele poet și filosof, dar și afirmațiile conferențiarilor ce s-au succedat vreme de patru ore patru, prin prezentarea promtă a numeroase cărți editate anume pe temele în discuție – și nu cred că exagerez afirmând că ni s-au prezentat ca la o sută de volume, cu explicațiile stricte, la obiect, despre conținutul lor, și este de subliniat: cărți citite la literă, iar nu elemente de decor cultural…",
+        "O foarte doctă comunicare a dnei Anca Sârghie despre Blaga, personalitate eclatantă a culturii noastre din veacul XX. Comparabil cu Eminescu, față de care, recunoscând filiația, Balga însuși se dorea a fi considerat ”fratele mai mic”. Și sunt de luat în seamă multe similitudini, ambii erau de formație germană, ambii au cultivat mitul național; au editat culegeri de folclor, etc. Poate intra în această sugestie de similitudini chiar faptul că Blaga, debutând la 15 ani, cu poeme îndelung ignorate, a fost publicat pentru prima dată nu altundeva ci chiar la Cernăuți, în Bucovina istorică. Apoi, Blaga s-a ocupat de editarea poeziilor lui Eminescu, însoțindu-le de docte prefețe; S-a ocupat de traducerea lui Eminescu în germană, 1928, pentru care va primi premiul Hamangiu, 1935. Tot timpul Blaga a făcut referiri la Eminescu, inclusiv în discursul de recepție la Academia Română. Era neiertător cu cei care l-au atacat pe Eminescu: Grama, Stăniloae, Rădulescu-Motru, contribuind esențial la reabilitarea Eminscului. Vezi studiul lui Liviu Rusu: De la Mihai Eminescu la Lucian Blaga, vezi și Ovidiu Drîmba: Filosofia lui Blaga. Și vine secvența cu minimul poet Mihai Beniuc, care l-a atacat ignobil pe Blaga, inclusiv în romanul Pe muchie de cuțit, 1959. Pe timpul conferinței, dl Sebastian Doreanu ne prezintă diferite cărți despre Blaga, trimise în străinătate, desigur fără coperte, pentru a fenta securitatea. Am relatat mai pe larg despre prima conferință, ca să vă faceți o idee generală despre nivelul susținerilor din Cenaclu. Căci de fapt puteți accesa linkul bisericii ortodoxe din Denver, unde veți găsi înregistrările tuturor ședințelor de cenaclu, biserica fiind cea care susține cu toate mijloacele acest cenaclu, ca să vă desfătați – și să vă îmbogățiți – și să vă edificați fiecare în parte.",
+        "Au urmat conferențiarii: Ioan Biriș: Lician Blaga și conceptele dogmatice. De la filosofia absolutului la filosofia științei. Afirmația clară: Lucian Blaga este cel mai mare filosof român – cum de altfel a afrimat C. Noica, alăturându-i lui Blaga pe D.D. Roșca. Mai în amănunt: Blaga a fost și poet și folosof, dar nu a încurcat cele două domenii. Era preocupat de știință încă din liceu, la bacalaureat i-a uimit pe examinatori. Își făcuse din matematică și fizică domenii de mare interes, cercetata în profunzime. În secolul XX se constată o lărgire a hotarelor cunoașterii, dar și o pendulare de la rațional la irațional. Bergson, Frobenius, Spengler, Freud. Îi frecventase pe Einstein, Poincare. Nu poate fi eludată latra riguroasă a operei lui Blaga. Etc.",
+        "Florea Lucaci. Principiul negației în gândirea lui Blaga.",
+        "Adrian Săhlean. Despre Spațiul mioritic, de Blaga; și despre numeroasele erori în abordarea baladei Miorița.",
+        "Ileana Costea. Artistul america Jerry Mc. Daniel și lumina lui Blaga.",
+        "Cristian Stamatoiu. Rădăcinile antropologice ale Meșterului Manole și prezența acestui mit, prin Lucian Blaga, în dramaturgia românească.",
+        "Maria-Daniela Pănăzan. Motice biblice în poezia lui Lucian Blaga.",
+        "Dorin Stoika. Condția omului în univers potrivit metafizicii lui Lucian Blaga.",
+        "Horia I. Groza. Blaga și satul românesc.",
+        "Ion Dur. Lucian Blaga și Vasile Băncilă – o prietenie metafizică.",
+        "Francisc Lorinczi. Sunetele lacrimei (recital din poemele lu Lucian Blaga).",
+        "Lidia Lazu: Recital Lucian Blaga – Lumina de ieri!",
+        "La urmă, cinci-șase persoane care și-au spus punctul de vedere la Discuții, găzduite cu aceeași distincție de dl Sebastian Doreanu.",
+        "Cercetați lucrările Cenaclului Mircea Eliade din Denver-Colorado pe saitul Bisericii din localitatea Denver.",
+        "Excelsior !",
+      ],
+    },
+    {
+      meta: "Articol scris de Ion Dur la adresa Cenaclului Mircea Eliade",
+      title: "Basarabia – colț de Românie",
+      paragraphs: [
+        "Cum și-a obișnuit publicul țintă, Cenaclul „Mircea Eliade” din Denver (Colorado) a avut ieri o nouă ediție „de colecție”. E-adevărat că tema era fierbinte, gravă, generoasă, de interes maxim: #BASARABIA - COLȚ DE ROMÂNIE.",
+        "Și-au încrucișat silogismele spre beneficiul celor peste 40 de urmăritori specialiști de primă mărime, care vin dinspre folclor, istorie, critică literară, proză: Sanda Golopenția, Nicolas Dima, Maria Daniela Pănăzan, Constantin Eretescu, Ada Stuparu, Anca Sârghie, Stoica Lascu, Alex Cetățeanu, Horia Ion Groza.",
+        "Cultivarea emoțiilor estetice a fost întreținută de suava pictură / grafică a Ilenei Barbu (care se încearcă deopotrivă și în sculptură), de variile formule poetice exersate de Lilia Manole, Diana Marcenco și Ștefan Mircea Bîrtan.",
+        "În cele patru ore cât a ținut Cenaclul, și-au făcut loc, la final, și discuțiile cu adevărat incendiare (profesorul Corbu avea diapazonul), cu judecăți deocamdată mai mult sau mai puțin utopice despre reîntregirea României de azi (Basarabia continuă să țipe sub cizma sovieto-rusă).",
+        "Dar întreaga regie și arhitectură a Cenaclului ”Mircea Eliade” se sprijină pe două cariatide, a căror forță susțin performanța binemeritată: filologa Simona Sîrghie și istoricul Sebastian / Cayus Dorean.",
+        "Felicitări pe deplin meritate și sănătate pentru a putea împinge pe mai departe această Corabie a lui Noe, în care urcă lună de lună toți cei ce simt și gândesc românește.",
+        "FIIND ROMÂNI, SUNTEM ȘI UNIVERSALI, ar spune Arghezi.",
+      ],
+    },
+  ],
+};
+
 export const pages: Record<string, PageContent> = {
+  "biserica-noastra/viitoarea-biserica": {
+    en: {
+      title: "Our Future Church",
+      eyebrow: "Our Church",
+      intro: "Discover the vision for the future home of Saint Dimitrie the New—a sacred place created for worship, fellowship, education, and generations to come.",
+      videoTitle: "The vision for our new church",
+      videoEmbed: "https://www.youtube-nocookie.com/embed/DIilNj0YD6g?rel=0",
+    },
+    ro: {
+      title: "Viitoarea noastră biserică",
+      eyebrow: "Biserica noastră",
+      intro: "Descoperiți viziunea viitorului lăcaș al parohiei Sfântul Dimitrie cel Nou—un spațiu sfânt pentru rugăciune, comuniune, educație și generațiile care vor veni.",
+      videoTitle: "Viziunea viitoarei noastre biserici",
+      videoEmbed: "https://www.youtube-nocookie.com/embed/DIilNj0YD6g?rel=0",
+    },
+  },
+  "community/youth-development": {
+    en: {
+      title: "Youth Development",
+      eyebrow: "Community",
+      intro: "A welcoming monthly gathering where teenagers and young adults can grow in faith, friendship, and confidence together.",
+      sections: [
+        {
+          heading: "A place to grow together",
+          paragraphs: [
+            "The Youth Development group brings together teenagers and young adults from our parish in a friendly and supportive setting. Through conversation, fellowship, and shared activities, participants can strengthen their relationships, explore their faith, and encourage one another through the opportunities and challenges of growing up.",
+            "The club offers young people a place to be heard, build lasting friendships, and become more involved in the life of our church community.",
+          ],
+        },
+        {
+          meta: "Monthly gathering",
+          heading: "When we meet",
+          paragraphs: ["The group meets on the last Tuesday of every month. Teenagers and young adults are warmly invited to join us."],
+          variant: "callout",
+        },
+      ],
+    },
+    ro: {
+      title: "Dezvoltarea tinerilor",
+      eyebrow: "Comunitate",
+      intro: "O întâlnire lunară primitoare, în care adolescenții și tinerii adulți pot crește împreună în credință, prietenie și încredere.",
+      sections: [
+        {
+          heading: "Un loc în care creștem împreună",
+          paragraphs: [
+            "Grupul de dezvoltare a tinerilor îi reunește pe adolescenții și tinerii adulți ai parohiei noastre într-un cadru prietenos și încurajator. Prin conversații, activități și momente petrecute împreună, participanții își pot întări relațiile, își pot aprofunda credința și se pot susține reciproc în oportunitățile și provocările acestei etape a vieții.",
+            "Clubul le oferă tinerilor un loc în care să fie ascultați, să lege prietenii de durată și să se implice mai mult în viața comunității bisericii noastre.",
+          ],
+        },
+        {
+          meta: "Întâlnire lunară",
+          heading: "Când ne întâlnim",
+          paragraphs: ["Grupul se întâlnește în ultima zi de marți a fiecărei luni. Adolescenții și tinerii adulți sunt invitați cu drag să ni se alăture."],
+          variant: "callout",
+        },
+      ],
+    },
+  },
   "biserica-noastra/clerul": {
     en: { title: "Our Clergy", eyebrow: "Our Church", intro: "Meet the clergy who serve the Saint Dimitrie the New parish community.", sections: [
       { heading: "Rev. Fr. Ioan Bogdan", image: { src: "/rev-fr-ioan-bogdan.webp", alt: "Rev. Fr. Ioan Bogdan" }, paragraphs: [
@@ -227,7 +437,7 @@ export const pages: Record<string, PageContent> = {
           "Memorial service (Parastas): $50",
           "House blessing (Sfeștanie): $100",
           "Funeral: $150",
-        ], link: { label: "More details about these services", href: "https://sfdimitrie.org/sfintele-slujbe/" }},
+        ]},
         { heading: "Important", paragraphs: ["No service will be refused for financial reasons."] },
       ],
     },
@@ -265,7 +475,7 @@ export const pages: Record<string, PageContent> = {
           "Parastas: $50",
           "Sfeștanie: $100",
           "Înmormântare: $150",
-        ], link: { label: "Mai multe detalii despre aceste servicii", href: "https://sfdimitrie.org/sfintele-slujbe/" }},
+        ]},
         { heading: "Important", paragraphs: ["Nicio slujbă nu va fi refuzată pe motive financiare."] },
       ],
     },
@@ -565,8 +775,8 @@ export const pages: Record<string, PageContent> = {
     },
   },
   "community/literary-circle": {
-    en: { title: "Mircea Eliade Literary Circle", eyebrow: "Community & Education", intro: "Explore the complete archive of recorded meetings, event photographs, and related articles from 2020 through 2024.", sections: literarySections("en") },
-    ro: { title: "Cenaclul literar Mircea Eliade", eyebrow: "Comunitate și educație", intro: "Explorați arhiva completă a întâlnirilor înregistrate, fotografiilor și articolelor din perioada 2020–2024.", sections: literarySections("ro") },
+    en: { title: "Mircea Eliade Literary Circle", eyebrow: "Community", intro: "A meeting place for Romanian literature, history, philosophy, art, faith, and cultural memory in Colorado and across the world.", literary: literaryPage("en") },
+    ro: { title: "Cenaclul literar Mircea Eliade", eyebrow: "Comunitate", intro: "Un loc de întâlnire pentru literatura, istoria, filosofia, arta, credința și memoria culturală românească din Colorado și din întreaga lume.", literary: literaryPage("ro") },
   },
   "community/announcements": placeholder("Community Announcements", "Anunțuri comunitare"),
   "donatii": {
