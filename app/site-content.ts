@@ -15,7 +15,7 @@ export const navigation: NavItem[] = [
   ]},
   { label: { en: "Calendar", ro: "Calendar" }, href: "/calendar/" },
   { label: { en: "Services", ro: "Sfintele slujbe" }, children: [
-    { label: { en: "Regular services", ro: "Slujbe regulate" }, href: "/services/divine-liturgy/" },
+    { label: { en: "Regular Liturgical Schedule", ro: "Programul liturgic obișnuit" }, href: "/services/divine-liturgy/" },
     { label: { en: "Baptism", ro: "Botez" }, href: "/services/baptism/" },
     { label: { en: "Marriage", ro: "Cununie" }, href: "/services/marriage/" },
     { label: { en: "Funeral Service", ro: "Înmormântare" }, href: "/services/funeral-service/" },
@@ -480,7 +480,7 @@ export const pages: Record<string, PageContent> = {
     },
   },
   "services/divine-liturgy": {
-    en: { title: "Regular services", eyebrow: "Services", sections: [
+    en: { title: "Regular Liturgical Schedule", eyebrow: "Services", sections: [
       { paragraphs: [
         "Every Sunday morning at 10:00 AM, we celebrate the Divine Liturgy.",
         "We also celebrate the Divine Liturgy at 10:00 AM on every feast day marked in red on the Romanian Orthodox Episcopate calendar.",
@@ -490,7 +490,7 @@ export const pages: Record<string, PageContent> = {
         "The parish also celebrates the Holy Mystery of Unction, especially during the major fasting periods of the Church year.",
       ], link: { label: "Vatra calendar", href: "https://roea.org/resources-category/calendar-tipic-paschalia/" } },
     ]},
-    ro: { title: "Slujbe regulate", eyebrow: "Sfintele slujbe", sections: [
+    ro: { title: "Programul liturgic obișnuit", eyebrow: "Sfintele slujbe", sections: [
       { paragraphs: [
         "În fiecare duminică dimineața, de la ora 10:00, săvârșim Sf. Liturghie.",
         "De asemenea, săvârșim Sfânta Liturghie de la ora 10:00 la fiecare sărbătoare trecută cu roșu în calendarul Episcopiei Ortodoxe Române din America.",
