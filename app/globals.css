@@ -333,9 +333,13 @@ footer { padding: 34px 0; background: #241518; color: #d7cbc6; }
 @media (max-width: 1180px) {
   .menu-toggle { display: block; }
   .nav-links { position: absolute; inset: 86px 0 auto; display: none; padding: 24px; background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 20px 30px rgba(40,25,20,.12); }
-  .nav-links.open { display: grid; gap: 20px; }
+  .nav-links.open { display: grid; grid-template-columns: minmax(0, 1fr); justify-content: stretch; justify-items: start; gap: 12px; text-align: left; }
+  .nav-links > a { justify-self: start; text-align: left; }
+  .nav-links > .nav-group { width: 100%; text-align: left; }
   .nav-group { display: grid; }
   .nav-parent { justify-content: flex-start; padding: 8px 0; font-size: 13px; }
+  .nav-parent::before { content: "+"; display: inline-flex; align-items: center; justify-content: center; width: 18px; margin-right: 8px; color: var(--wine); font-size: 20px; line-height: 1; }
+  .nav-group.open .nav-parent::before { content: "−"; }
   .nav-links > a:hover, .nav-links > a:focus-visible, .nav-parent:hover, .nav-parent:focus-visible, .nav-group.open .nav-parent { box-shadow: none; }
   .nav-group.open .nav-parent { color: var(--wine); }
   .nav-dropdown { position: static; display: none; width: auto; min-width: 0; margin: 8px 0 0 12px; padding: 0 0 0 12px; border: 0; border-left: 1px solid var(--gold); box-shadow: none; opacity: 1; visibility: visible; transform: none; }
