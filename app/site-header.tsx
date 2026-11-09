@@ -76,23 +76,7 @@ export default function SiteHeader({ language, onLanguageChange }: { language: L
             title={language === "en" ? "Română" : "English"}
             onClick={() => { onLanguageChange(language === "en" ? "ro" : "en"); closeNavigation(); }}
           >
-            <span className="language-flag" aria-hidden="true">
-              {language === "en" ? (
-                <svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice" role="presentation">
-                  <path fill="#002B7F" d="M0 0h1v2H0z" />
-                  <path fill="#FCD116" d="M1 0h1v2H1z" />
-                  <path fill="#CE1126" d="M2 0h1v2H2z" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" role="presentation">
-                  <path fill="#012169" d="M0 0h60v30H0z" />
-                  <path stroke="#FFF" strokeWidth="6" d="m0 0 60 30m0-30L0 30" />
-                  <path stroke="#C8102E" strokeWidth="4" d="m0 0 60 30m0-30L0 30" />
-                  <path stroke="#FFF" strokeWidth="10" d="M30 0v30M0 15h60" />
-                  <path stroke="#C8102E" strokeWidth="6" d="M30 0v30M0 15h60" />
-                </svg>
-              )}
-            </span>
+            {language === "en" ? "Română" : "English"}
           </button>
         </nav>
       </div>
