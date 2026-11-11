@@ -183,11 +183,25 @@ export default function Home() {
               </div>
               <a className="button calendar-button" href="/calendar/">{t.viewCalendar}</a>
             </div>
+            <div className="featured-events-layout">
+              <article className="featured-concert">
+                <a href={`/images/christmas-concert-2026-${language}.jpg`} target="_blank" rel="noreferrer" aria-label={language === "en" ? "Open the Christmas concert poster" : "Deschide afișul concertului de colinde"}>
+                  <img src={`/images/christmas-concert-2026-${language}.jpg`} alt={language === "en" ? "Harmonies and Aromas of Christmas — Christmas carols concert, December 12, 2026 at 6 PM" : "Armonii și Arome de Crăciun — Concert de colinde, 12 decembrie 2026, ora 18:00"} />
+                </a>
+                <div className="featured-concert-copy">
+                  <p className="eyebrow">{language === "en" ? "Christmas carols concert" : "Concert de colinde"}</p>
+                  <h3>{language === "en" ? "Harmonies and Aromas of Christmas" : "Armonii și Arome de Crăciun"}</h3>
+                  <time dateTime="2026-12-12T18:00:00-07:00">{language === "en" ? "Saturday, December 12 · 6:00 PM" : "Sâmbătă, 12 decembrie · 18:00"}</time>
+                  <p>{language === "en" ? "Join us for an evening of Christmas carols at our church. Reserve a basket of traditional Romanian treats by December 6—see the poster for details." : "Vă invităm la o seară de colinde la biserica noastră. Rezervați un coș cu bunătăți tradiționale românești până pe 6 decembrie—detalii în afiș."}</p>
+                  <a className="text-link" href={`/images/christmas-concert-2026-${language}.jpg`} target="_blank" rel="noreferrer">{language === "en" ? "View full poster ↗" : "Vezi afișul complet ↗"}</a>
+                </div>
+              </article>
+              <div className="calendar-events-list">
             {serviceState === "loading" && <p className="services-status">{t.loadingServices}</p>}
             {serviceState === "error" && <p className="services-status">{t.calendarUnavailable}</p>}
             {serviceState === "ready" && serviceEvents.length === 0 && <p className="services-status">{t.noServices}</p>}
             {serviceEvents.length > 0 && <div className="upcoming-service-grid">
-              {serviceEvents.map((event) => {
+              {serviceEvents.slice(0, 4).map((event) => {
                 const start = new Date(event.start);
                 return <article className="upcoming-service-card" key={event.uid}>
                   <span className="service-cross" aria-hidden="true">✛</span>
@@ -200,6 +214,8 @@ export default function Home() {
                 </article>;
               })}
             </div>}
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -133,6 +133,18 @@ address small { color: var(--wine); text-transform: uppercase; font-size: 10px; 
 .services-section { background: linear-gradient(135deg, #f8f1e6 0%, #f4eadc 100%); }
 .upcoming-services { padding-block: 82px; }
 .services-split { display: grid; grid-template-columns: minmax(310px, .78fr) minmax(0, 1.35fr); gap: 42px; align-items: start; }
+.featured-events-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.featured-concert { display: flex; flex-direction: column; overflow: hidden; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 12px 32px rgb(70 30 25 / 6%); }
+.featured-concert img { width: 100%; height: auto; display: block; }
+.featured-concert-copy { order: -1; padding: 22px; }
+.featured-concert-copy .eyebrow { font-size: 10px; margin-bottom: 10px; }
+.featured-concert h3 { margin: 0 0 14px; color: var(--wine); font-family: Georgia, serif; font-size: 25px; line-height: 1.2; font-weight: 400; }
+.featured-concert time { color: var(--wine); font-size: 13px; font-weight: 750; }
+.featured-concert-copy > p:not(.eyebrow) { font-size: 14px; line-height: 1.7; }
+.calendar-events-list .upcoming-service-grid { grid-template-columns: minmax(0, 1fr); }
+.calendar-events-list .upcoming-service-card { padding: 22px 18px; gap: 12px; }
+.calendar-events-list .upcoming-service-card h3 { font-size: 22px; }
+@media (max-width: 640px) { .featured-events-layout { grid-template-columns: minmax(0, 1fr); } }
 .regular-services-panel { padding: 42px 38px; background: var(--wine-deep); color: white; box-shadow: 0 18px 45px rgba(64,18,26,.14); }
 .regular-services-panel h2, .events-heading h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 4vw, 54px); font-weight: 400; line-height: 1.04; letter-spacing: -.025em; }
 .regular-services-intro { margin: 22px 0 0; color: #e9ddd7; font-family: Georgia, serif; font-size: 17px; line-height: 1.7; }
