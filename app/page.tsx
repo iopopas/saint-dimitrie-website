@@ -181,7 +181,6 @@ export default function Home() {
                 <h2>{t.upcomingTitle}</h2>
                 <p>{t.upcomingBody}</p>
               </div>
-              <a className="button calendar-button" href="/calendar/">{t.viewCalendar}</a>
             </div>
             <div className="featured-events-layout">
               <article className="featured-concert">
@@ -214,6 +213,7 @@ export default function Home() {
                 </article>;
               })}
             </div>}
+                <a className="button calendar-button" href="/calendar/" style={{ marginTop: 20 }}>{t.viewCalendar}</a>
               </div>
             </div>
           </div>
